@@ -9,14 +9,14 @@ const Cart = ({ isVisible, setIsVisible }) => {
 
   const product = useSelector((rootReducer) => rootReducer.cartReducer)
 
-  console.log(product.state[0])
+  console.log(product)
 
   return (
     <Styles.CartContainer isVisible={isVisible}>
       <Styles.CartEscapeArea onClick={handleEscapeAreaClick} />
       <Styles.CartContent>
         <Styles.CartTitle>Seu Carrinho</Styles.CartTitle>
-        {product.state.map((product) => <CartItem product={product} />)}
+        {product.state ? product.state.map((product) => <CartItem product={product} />) : ""}
       </Styles.CartContent>
     </Styles.CartContainer>
   );

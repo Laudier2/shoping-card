@@ -7,7 +7,7 @@ const App = () => {
 
   const product = useSelector(products => products.cartReducer)
 
-  console.log(product)
+ // console.log(product)
 
   return (
     <div>
