@@ -1,8 +1,10 @@
-import { createStore, applyMiddleware } from "redux";
-import logger from "redux-logger"
+import { configureStore } from "@reduxjs/toolkit";
 
-import rootReducer from "./root-reducer";
+import carttReducer from './cart/cart'
 
-const store = createStore(rootReducer, applyMiddleware(logger));
 
-export default store;
+export default configureStore({
+    reducer: {
+        cart: carttReducer
+    }
+})

@@ -19,7 +19,11 @@ const Cart = ({ isVisible, setIsVisible }) => {
         <Styles.CartTitle>
           <SlBasket /> Seu Carrinho
         </Styles.CartTitle>
-        {cart.map((product) => <CartItem key={product.id} product={product} />)}
+        {cart.map((product) =>
+          <div key={product.product.id}>
+            <CartItem key={product.id} product={product} />
+          </div>
+        )}
       </Styles.CartContent>
     </Styles.CartContainer>
   );
