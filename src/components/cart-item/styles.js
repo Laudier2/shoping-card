@@ -8,6 +8,10 @@ export const CartItemContainer = styled.div`
   p {
     color: #222222;
   }
+
+  svg {
+    color: #222222;
+  }
 `;
 
 export const CartItemImage = styled.div`
@@ -55,6 +59,11 @@ export const CartItemQuantity = styled.div`
 
 export const RemoveButton = styled.div`
   margin-right: 20px;
+  background-color: red;
+  border-radius: 5px;
+  padding: 5px;
+  text-align: center;
+  color: white;
 
   &:hover {
     cursor: pointer;

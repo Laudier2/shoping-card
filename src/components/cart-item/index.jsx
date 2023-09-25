@@ -2,21 +2,31 @@ import { AiOutlinePlus, AiOutlineMinus, AiOutlineClose } from "react-icons/ai";
 
 // Styles
 import * as Styles from "./styles";
+import { useDispatch } from "react-redux";
+import { removeItem } from "../../redux/cart/cart";
 
 const CartItem = ({ product }) => {
-  const handleRemoveClick = () => { };
+
+  const dispatch = useDispatch()
+
+  const handleRemoveClick = (id) => {
+    dispatch(removeItem(id))
+    console.log(id)
+  };
 
   const handleIncreaseClick = () => { };
 
   const handleDecreaseClick = () => { };
 
+  //console.log(product.product.id)
+
   return (
     <Styles.CartItemContainer>
-      <Styles.CartItemImage imageUrl={product.imageUrl} />
+      <Styles.CartItemImage imageUrl={product.product.imageUrl} />
 
       <Styles.CartItemInfo>
-        <p>{product.name}</p>
-        <p>R${product.price}</p>
+        <p>{product.product.name}</p>
+        <p>R${product.product.price}</p>
 
         <Styles.CartItemQuantity>
           <AiOutlineMinus
@@ -34,8 +44,8 @@ const CartItem = ({ product }) => {
       </Styles.CartItemInfo>
 
       <Styles.RemoveButton
-        onClick={handleRemoveClick}
-        aria-label={`Remove ${product.name}`}
+        onClick={() => handleRemoveClick(product.product.id)}
+        aria-label={`Remove`}
       >
         <AiOutlineClose size={25} />
       </Styles.RemoveButton>

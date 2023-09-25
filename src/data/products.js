@@ -18,7 +18,7 @@ const products = [
     id: "6228ff71b7e6cb904bbe0175",
     imageUrl:
       "https://images.unsplash.com/photo-1584670747417-594a9412fba5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
-    name: "Suéter Vermelho Vibrante",
+    name: "Suéter Vermelho",
   },
   {
     name: "Vestido Vermelho",

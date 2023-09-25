@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { SlBasket, SlBasketLoaded } from "react-icons/sl";
+
 
 // Components
 import Cart from "../cart/index";
@@ -15,9 +17,17 @@ function Header() {
 
   const dispatch = useDispatch();
 
-  const { currentUser } = useSelector((state) => state.userReducer);
+  /*const { currentUser } = useSelector((state) => state.userReducer);
+  const { ...products } = useSelector((state) => state.cartReducer);*/
+  const length = useSelector((state) => state.cart.length)
 
-  //console.log(currentUser)
+  /*const productsCount = useMemo(() => {
+    return products.state2.reduce((acc, curr) => acc + curr.quantity, 0)
+  }, [products.state2])*/
+
+  //console.log(length)
+
+  const currentUser = ''
 
   const handleCartClick = () => {
     setCartIsVisible(true);
@@ -41,7 +51,13 @@ function Header() {
           <div onClick={handleLoginClick}>Login</div>
         )}
 
-        <div onClick={handleCartClick}>Carrinho</div>
+        <div onClick={handleCartClick}>
+          <b>{length}</b>
+          {length > 0 ?
+            <SlBasketLoaded style={{ fontSize: 30 }} />
+            : <SlBasket style={{ fontSize: 30 }} />
+          }
+        </div>
       </Styles.Buttons>
 
       <Cart isVisible={cartIsVisible} setIsVisible={setCartIsVisible} />

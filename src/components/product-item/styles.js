@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const ProductContainer = styled.div`
-  display: flex;
+  display: flex; 
   flex-direction: column;
 
   @media (max-width: 768px) {
@@ -15,15 +15,15 @@ export const ProductInfo = styled.div`
   margin-top: 5px;
 
   p {
-    font-size: 1rem;
+    font-size: 1.2rem;
     font-weight: 500;
   }
 `;
 
 export const ProductImage = styled.div`
   background-image: ${(props) => `url('${props.imageUrl}')`};
-  height: 380px;
-  width: 300px;
+  height: 300px;
+  width: 300;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
