@@ -1,16 +1,18 @@
 // Styles
-import { useSelector } from "react-redux";
 import * as Styles from "./styles";
 //import rootReducer from "../../redux/root-reducer";
 import CartItem from "../cart-item/index"
 import { SlBasket } from "react-icons/sl";
+import { useSelector } from "react-redux";
 
 const Cart = ({ isVisible, setIsVisible }) => {
   const handleEscapeAreaClick = () => setIsVisible(false);
 
-  const cart = useSelector((state) => state.cart)
+  const cart = useSelector(cartItems => cartItems.cart.cartItems)
 
-  //console.log(cart)
+  const cart2 = []
+
+  console.log(cart)
 
   return (
     <Styles.CartContainer isVisible={isVisible}>
@@ -20,7 +22,7 @@ const Cart = ({ isVisible, setIsVisible }) => {
           <SlBasket /> Seu Carrinho
         </Styles.CartTitle>
         {cart.map((product) =>
-          <div key={product.product.id}>
+          <div key={product.id}>
             <CartItem key={product.id} product={product} />
           </div>
         )}

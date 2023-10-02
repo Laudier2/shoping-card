@@ -3,30 +3,34 @@ import { AiOutlinePlus, AiOutlineMinus, AiOutlineClose } from "react-icons/ai";
 // Styles
 import * as Styles from "./styles";
 import { useDispatch } from "react-redux";
-import { removeItem } from "../../redux/cart/cart";
+import { addCart } from "../../redux/cart/cart";
 
 const CartItem = ({ product }) => {
 
   const dispatch = useDispatch()
 
+
   const handleRemoveClick = (id) => {
-    dispatch(removeItem(id))
-    console.log(id)
+    dispatch(addCart(id))
   };
 
-  const handleIncreaseClick = () => { };
+  const handleIncreaseClick = (e) => {
+    dispatch(addCart(e))
+  };
 
-  const handleDecreaseClick = () => { };
+  const handleDecreaseClick = (id) => {
+    dispatch(addCart(id))
+  };
 
-  //console.log(product.product.id)
+  //console.log(product.id)
 
   return (
     <Styles.CartItemContainer>
-      <Styles.CartItemImage imageUrl={product.product.imageUrl} />
+      <Styles.CartItemImage imageUrl={product.image} />
 
       <Styles.CartItemInfo>
-        <p>{product.product.name}</p>
-        <p>R${product.product.price}</p>
+        <p>{product.name}</p>
+        <p>R${product.price}</p>
 
         <Styles.CartItemQuantity>
           <AiOutlineMinus
@@ -34,17 +38,17 @@ const CartItem = ({ product }) => {
             onClick={handleDecreaseClick}
             aria-label={`Decrease quantity of ${product.name}`}
           />
-          <p>{product.quantity}</p>
+          <p>{product.cartQuantity}</p>
           <AiOutlinePlus
             size={20}
-            onClick={handleIncreaseClick}
+            onClick={() => handleIncreaseClick(product)}
             aria-label={`Increase quantity of ${product.name}`}
           />
         </Styles.CartItemQuantity>
       </Styles.CartItemInfo>
 
       <Styles.RemoveButton
-        onClick={() => handleRemoveClick(product.product.id)}
+        onClick={() => handleRemoveClick(product.id)}
         aria-label={`Remove`}
       >
         <AiOutlineClose size={25} />

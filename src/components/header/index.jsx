@@ -10,50 +10,34 @@ import Cart from "../cart/index";
 import * as Styles from "./styles";
 
 // Utilities
-import { loginUser, logoutUser } from "../../redux/user/actions";
-
 function Header() {
   const [cartIsVisible, setCartIsVisible] = useState(false);
 
-  const dispatch = useDispatch();
-
-  /*const { currentUser } = useSelector((state) => state.userReducer);
-  const { ...products } = useSelector((state) => state.cartReducer);*/
-  const length = useSelector((state) => state.cart.length)
-
-  /*const productsCount = useMemo(() => {
-    return products.state2.reduce((acc, curr) => acc + curr.quantity, 0)
-  }, [products.state2])*/
-
-  //console.log(length)
-
-  const currentUser = ''
+  const currentQuantityCart = useSelector(cartItems => cartItems.cart.cartItems.length)
 
   const handleCartClick = () => {
     setCartIsVisible(true);
   };
 
   const handleLoginClick = () => {
-    dispatch(loginUser({ name: "Felipe Rocha", email: "felipe@rocha.com" }));
   };
 
   const handleLogoutClick = () => {
-    dispatch(logoutUser());
   };
 
   return (
     <Styles.Container>
       <Styles.Logo>Redux Shopping</Styles.Logo>
       <Styles.Buttons>
-        {currentUser ? (
+        {currentQuantityCart ? (
           <div onClick={handleLogoutClick}>Sair</div>
         ) : (
           <div onClick={handleLoginClick}>Login</div>
         )}
 
         <div onClick={handleCartClick}>
-          <b>{length}</b>
-          {length > 0 ?
+          <b>{currentQuantityCart}</b>
+          {currentQuantityCart > 0 ?
             <SlBasketLoaded style={{ fontSize: 30 }} />
             : <SlBasket style={{ fontSize: 30 }} />
           }

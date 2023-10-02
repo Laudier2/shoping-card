@@ -47,6 +47,10 @@ export const CartItemQuantity = styled.div`
   align-items: center;
   margin-top: 10px;
 
+  b {
+    color: black;
+  }
+
   p {
     margin-left: 10px;
     margin-right: 10px;
@@ -63,7 +67,6 @@ export const RemoveButton = styled.div`
   border-radius: 5px;
   padding: 5px;
   text-align: center;
-  color: white;
 
   &:hover {
     cursor: pointer;

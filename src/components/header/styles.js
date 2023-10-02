@@ -29,5 +29,11 @@ export const Buttons = styled.div`
     &:nth-child(1) {
       margin-right: 40px;
     }
+    b {
+      position: absolute;
+      margin-left: 14px;
+      margin-top: 7px;
+      font-size: 11px;
+    }
   }
 `;
